@@ -68,3 +68,4 @@ git commit -m "Stop tracking file.txt"
 > Use `assume-unchanged` for tracked files you don’t want to accidentally push.
 
 ---
+<img width="934" height="632" alt="Screenshot 2025-12-10 at 10 58 52 AM" src="https://github.com/user-attachments/assets/93f69bad-297b-42eb-b651-3a390df75ca6" />
