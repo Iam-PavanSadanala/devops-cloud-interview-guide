@@ -1,6 +1,15 @@
 ## Question  
 Explain a recent challenge you faced with Git and how you addressed it.
 
+## Explanation about creating github action to validate the PR's
+
+In a recent project, we faced repeated issues with inconsistent PR titles. This affected release automation and ticket tracking because the titles did not follow our expected format. To fix this, I created a GitHub Action that validates PR titles using a regex rule. The action runs on every PR event, checks the title, and blocks merges if the format doesn’t match our standard.
+
+During implementation, I had to handle edge cases — for example tuning the regex so it wasn’t overly strict, ensuring the action also ran when titles were edited, and exempting automated PRs like dependabot.
+
+Once implemented, it significantly improved the quality and consistency of our PRs, reduced manual review effort, and helped our release notes pipeline work flawlessly.
+
+
 ### 📝 Short Explanation  
 This question is intended to assess your experience with Git at scale — especially around collaborative processes and governance. It’s an opportunity to demonstrate how you bring structure to complex codebases across teams.
 
@@ -47,3 +56,5 @@ The result was:
 - It became easier to onboard new developers and automate release workflows.
 
 ---
+
+
