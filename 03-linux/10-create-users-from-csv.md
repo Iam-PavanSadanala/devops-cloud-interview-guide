@@ -19,6 +19,49 @@ This task tests your ability to read structured data (CSV) and automate user man
 
 ## ✅ Answer
 
+```bash
+#!/bin/bash
+
+CSV_FILE="users.csv"
+
+# Check if script is run as root
+if [[ $EUID -ne 0 ]]; then
+  echo "Please run this script as root."
+  exit 1
+fi
+
+# Check if CSV file exists
+if [[ ! -f "$CSV_FILE" ]]; then
+  echo "CSV file not found: $CSV_FILE"
+  exit 1
+fi
+
+# Skip header and read CSV
+tail -n +2 "$CSV_FILE" | while IFS=',' read -r USERNAME PASSWORD
+do
+  # Trim spaces
+  USERNAME=$(echo "$USERNAME" | xargs)
+  PASSWORD=$(echo "$PASSWORD" | xargs)
+
+  # Skip empty lines
+  [[ -z "$USERNAME" || -z "$PASSWORD" ]] && continue
+
+  # Check if user already exists
+  if id "$USERNAME" &>/dev/null; then
+    echo "User already exists: $USERNAME"
+    continue
+  fi
+
+  # Create user
+  useradd -m "$USERNAME"
+
+  # Set password
+  echo "$USERNAME:$PASSWORD" | chpasswd
+
+  echo "User created successfully: $USERNAME"
+done
+```
+-------------
 
 ```bash
 #!/bin/bash
