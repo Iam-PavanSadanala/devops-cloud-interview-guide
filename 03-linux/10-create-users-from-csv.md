@@ -47,7 +47,7 @@ do
   [[ -z "$USERNAME" || -z "$PASSWORD" ]] && continue
 
   # Check if user already exists
-  if id "$USERNAME" &>/dev/null; then
+  if id "$USERNAME" &>/dev/null; then    #“&>/dev/null redirects both stdout and stderr, making it ideal for existence checks like id username. Using only >/dev/null hides stdout but still prints error messages to stderr, which is not suitable for clean automation.”
     echo "User already exists: $USERNAME"
     continue
   fi
