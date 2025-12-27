@@ -16,7 +16,7 @@ Once it gets the IP address, your computer can connect to the right server and l
 
 ---
 
-### 📘 Detailed Explanation
+# 📘 Detailed Explanation
 
 - **Domain name**: A human-friendly name like `amazon.com`.
 - **IP address**: A computer-friendly address like `192.0.2.1`.
